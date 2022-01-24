@@ -1,7 +1,9 @@
 export default class TemplateEngine {
 
+
+
     // Helper function to check tree for actions
-    checktreeForActions(tree) {
+    private checktreeForActions(tree) {
         if (tree) {
             checkElementForActions(tree);
             tree.childNodes.forEach((child) => {
@@ -14,7 +16,7 @@ export default class TemplateEngine {
     }
 
     // Helper function called by checktreeForActions() to check for actions on specific elements
-    checkElementForActions(element) {
+    private checkElementForActions(element : Node) {
       if (element && element.hasAttribute) {
         if (element.hasAttribute("data-action")) {
           const dataAction = element.getAttribute("data-action");
@@ -34,7 +36,7 @@ export default class TemplateEngine {
       }
     };
 
-    sanitize(content) {
+    private sanitize(content : string) : string {
         const text = content.toString();
         text = text.replace(new RegExp("&", "g"), "&amp;");
         text = text.replace(new RegExp("<", "g"), "&lt;");
@@ -44,9 +46,15 @@ export default class TemplateEngine {
         return text;
     }
 
-    checkifDom(element) {
+    private checkifDom(element: Node) : boolean {
         return element instanceof Element
     }
+
+    private checkIfCanyonComponent(element: Node) : boolean {
+      return element instanceof CanyonComponent
+    }
+
+
 
 
 }
