@@ -1,7 +1,6 @@
 import StoredValue from "./StoredValue";
 import TemplateEngine from "./TemplateEngine";
 import Watcher from "./Watcher";
-import
 
 class Canyon {
     
@@ -9,7 +8,7 @@ class Canyon {
     templateEngine: TemplateEngine;
 
     constructor() {
-        storage = [];
+        this.storage = [];
         this.templateEngine = new TemplateEngine();
     }
 
@@ -27,7 +26,7 @@ class Canyon {
     }
 
     addAction(bind: string, listeners: any, fn: any) : void {
-        const binds? : Node[] = document.querySelectorAll(
+        const binds : Node[] = document.querySelectorAll(
             `[data-action*="${bind}"]`,
             `[data-action^="${bind}"]`
         );
@@ -50,3 +49,5 @@ class Canyon {
     }
 
 }
+
+module.export = new Canyon();
